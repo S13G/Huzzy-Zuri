@@ -12,13 +12,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from datetime import timedelta
+from django.utils.encoding import force_str
+from urllib.parse import quote as urlquote
 from pathlib import Path
-
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,18 +85,12 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
 
-
-
             ],
         },
     },
 ]
 
-
-
 WSGI_APPLICATION = 'NewProject40.wsgi.application'
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -116,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 INTERNAL_IPS = [
 
@@ -146,7 +138,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -158,7 +149,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.CustomUser'
 
-
 AUTHENTICATION_BACKENDS = [
 
     'social_core.backends.google.GoogleOAuth2',
@@ -169,7 +159,7 @@ AUTHENTICATION_BACKENDS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'COERCE_DECIMAL_TO_STRING': False,
 }
@@ -210,7 +200,6 @@ DJOSER = {
 
     },
 
-
 }
 
 SESSION_COOKIE_SECURE: False
@@ -222,7 +211,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.ema
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
 
-
 # SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['state']
 
 
@@ -232,9 +220,4 @@ EMAIL_HOST_USER = '617e747e2afc2c'
 EMAIL_HOST_PASSWORD = 'e99890b04db43b'
 EMAIL_PORT = '2525'
 
-
-
-
-
 CORS_ALLOW_ALL_ORIGINS = True
-
