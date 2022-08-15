@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from datetime import timedelta
-from django.utils.encoding import force_str
+from django.utils.encoding import force_str as force_text
 from urllib.parse import quote as urlquote
 from pathlib import Path
 

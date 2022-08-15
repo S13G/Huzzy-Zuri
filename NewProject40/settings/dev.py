@@ -1,4 +1,6 @@
 import dj_database_url
+from django.utils.encoding import force_str as force_text
+from urllib.parse import quote as urlquote
 
 from .common import *
 

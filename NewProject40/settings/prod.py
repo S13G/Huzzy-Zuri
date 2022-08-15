@@ -1,5 +1,7 @@
 import os
-from .common import * 
+from .common import *
+from django.utils.encoding import force_str as force_text
+from urllib.parse import quote as urlquote
 
 ALLOWED_HOSTS = []
 
