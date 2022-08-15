@@ -93,6 +93,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'NewProject40.wsgi.application'
 
 
@@ -133,15 +135,21 @@ USE_I18N = True
 
 USE_TZ = True
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
